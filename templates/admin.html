@@ -1,0 +1,70 @@
+<!-- admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-link {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .btn-link a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .btn-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>管理</h2>
+    <div class="btn-link">
+        <a href="/add_post" class="btn btn-primary">添加文章</a>
+    </div>
+
+    <h3>博文</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>标题</th>
+            <th>作者</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+        <tr>
+            <td>{{ post.title }}</td>
+            <td>{{ post.author }}</td>
+            <td>
+                <a href="/edit_post/{{ post.id }}" class="btn btn-sm btn-primary">编辑</a>
+                <a href="/delete_post/{{ post.id }}" class="btn btn-sm btn-danger">删除</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>细节</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+
+        nav {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* 将导航项水平排列 */
+            justify-content: center; /* 在导航栏中央对齐 */
+        }
+
+        nav ul li {
+            margin: 0 20px; /* 初始间距 */
+            display: inline-block; /* 在同一行内显示 */
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border-radius: 20px; /* 圆角 */
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* 半透明白色背景 */
+        }
+
+        /* 添加动画效果 */
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        nav ul li:nth-child(odd) {
+            animation: slideIn 0.5s forwards;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav ul li:nth-child(odd) {
+                animation: none;
+            }
+
+            nav ul {
+                display: block; /* 将导航项垂直排列 */
+            }
+
+            nav ul li {
+                margin: 10px 0; /* 更改间距 */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            nav ul li {
+                display: block; /* 将导航项垂直排列 */
+                margin: 10px 0; /* 更改间距 */
+            }
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .post {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .post h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .post p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .post small {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li>
+            <a class="nav-link" href="/index">首页</a>
+        </li>
+        <li>
+            <a class="nav-link" href="/create_post">撰写</a>
+        </li>
+        <li>
+            <a class="nav-link" href="/post_list">博文</a>
+        </li>
+        <li>
+            <a class="nav-link" href="/logout">登出</a>
+        </li>
+    </ul>
+</nav>
+
+
+<div class="container">
+    <h2>详情</h2>
+    <div class="post">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+        <small>Author: {{ post.author }}</small>
+    </div>
+</div>
+</body>
+</html>

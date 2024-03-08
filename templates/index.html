@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* 将导航项水平排列 */
+            justify-content: center; /* 在导航栏中央对齐 */
+        }
+
+        nav ul li {
+            margin: 0 20px; /* 初始间距 */
+            display: inline-block; /* 在同一行内显示 */
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border-radius: 20px; /* 圆角 */
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* 半透明白色背景 */
+        }
+
+        /* 添加动画效果 */
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        nav ul li:nth-child(odd) {
+            animation: slideIn 0.5s forwards;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav ul li:nth-child(odd) {
+                animation: none;
+            }
+
+            nav ul {
+                display: block; /* 将导航项垂直排列 */
+            }
+
+            nav ul li {
+                margin: 10px 0; /* 更改间距 */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            nav ul li {
+                display: block; /* 将导航项垂直排列 */
+                margin: 10px 0; /* 更改间距 */
+            }
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .box {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .post {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-content {
+            margin-bottom: 10px;
+        }
+
+        .post-content h3 {
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .post-content p {
+            margin: 0;
+            color: #7e7d7d;
+        }
+
+        .post-author {
+            margin-top: 10px;
+            color: #00ff76;
+        }
+
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li>
+            <a class="nav-link" href="/create_post">发表</a>
+        </li>
+        <li>
+            <a class="nav-link" href="/post_list">博文</a>
+        </li>
+        <li>
+            <a class="nav-link" href="/logout">登出</a>
+        </li>
+        {% if 'logged_in' in session and session['logged_in'] and session['username'] == 'admin' %}
+        <li>
+            <a class="nav-link" href="/admin">管理</a>
+        </li>
+        {% endif %}
+
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="box">
+        <h2>我来组成头部</h2>
+        {% for post in posts %}
+        <div class="post">
+            <div class="post-content">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content }}</p>
+            </div>
+            <div class="post-author">
+                <small>作者: {{ post.author }}</small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+        <p>你好！我不好</p>
+    </div>
+</footer>
+</body>
+</html>
