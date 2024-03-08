@@ -80,7 +80,7 @@ def index():
         return redirect(url_for('login'))
 
 
-# 发表文章页面
+# 发表帖子页面
 @app.route('/create_post', methods=['GET', 'POST'])
 def create_post():
     if 'logged_in' not in session or not session['logged_in']:
@@ -147,7 +147,7 @@ def admin():
         return redirect(url_for('login'))
 
 
-# 添加文章页面
+# 添加帖子页面
 @app.route('/add_post', methods=['GET', 'POST'])
 def add_post():
     if 'logged_in' in session and session['logged_in'] and session['username'] == 'admin':
@@ -167,7 +167,7 @@ def add_post():
         return redirect(url_for('login'))
 
 
-# 编辑文章页面
+# 编辑帖子页面
 @app.route('/edit_post/<int:post_id>', methods=['GET', 'POST'])
 def admin_edit_post(post_id):
     if 'logged_in' in session and session['logged_in'] and session['username'] == 'admin':
@@ -190,7 +190,7 @@ def admin_edit_post(post_id):
         return redirect(url_for('login'))
 
 
-# 删除文章
+# 删除帖子
 @app.route('/delete_post/<int:post_id>')
 def delete_post(post_id):
     if 'logged_in' in session and session['logged_in'] and session['username'] == 'admin':
