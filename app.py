@@ -5,10 +5,25 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 # MySQL配置
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'ApologizeYa.110'
-app.config['MYSQL_DB'] = 'blog'
+path = 'sql_conf.txt'
+with open(path , 'r', encoding="utf-8") as file:
+    lines = file.readlines()
+    for line in lines:
+        info = line.split(":")
+        if info[0] == "主机名(host)":
+            host = info[1].strip()
+        if info[0] == "用户(user)":
+            user = info[1].strip()
+        if info[0] == "密码(passwd)":
+            password = info[1].strip()
+        if info[0] == "数据库(db)":
+            db = info[1].strip()
+
+
+app.config['MYSQL_HOST'] = host
+app.config["MYSQL_USER"] = user
+app.config['MYSQL_PASSWORD'] = str(password) + "Ya.110"
+app.config['MYSQL_DB'] = db
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)

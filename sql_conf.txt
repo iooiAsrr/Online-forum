@@ -1,0 +1,4 @@
+主机名(host):8.222.160.133
+用户(user):asrr
+密码(passwd):Apologize
+数据库(db):form
